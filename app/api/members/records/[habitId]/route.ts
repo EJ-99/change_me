@@ -7,9 +7,9 @@ import { getMemberIdFromToken } from "@/utils/auth";
 import { NextResponse } from "next/server";
 
 type RequestParams = {
-    params: {
+    params: Promise<{
         habitId: string;
-    };
+    }>;
 };
 
 export async function GET(request: Request, { params }: RequestParams) {
