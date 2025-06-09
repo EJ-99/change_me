@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 import { DeleteCategoryUsecase } from "@/application/usecase/category/DeleteCategoryUsecase";
 
 type RequestParams = {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 };
 
 export async function PATCH(request: Request, { params }: RequestParams) {
