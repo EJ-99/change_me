@@ -12,7 +12,9 @@ export default function HabitModal() {
     const isEdit = modalType === "habit";
     const token = useAuthStore.getState().token;
 
-    const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
+    const [categories, setCategories] = useState<
+        { id: number; name: string }[]
+    >([]);
     const [categoryId, setCategoryId] = useState<number | null>(null);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -64,8 +66,8 @@ export default function HabitModal() {
 
         const method = isEditMode ? "PATCH" : "POST";
         const url = isEditMode
-            ? `/api/members/test-habits/${modalProps.habit.id}`
-            : `/api/members/test-habits`;
+            ? `/api/members/habits/${modalProps.habit.id}`
+            : `/api/members/habits`;
 
         try {
             const res = await fetch(url, {
@@ -84,15 +86,22 @@ export default function HabitModal() {
 
             const data = await res.json();
             if (res.ok) {
-                useToastStore.getState().show(
-                    isEditMode ? "습관이 수정되었습니다." : "습관이 등록되었습니다."
-                );
+                useToastStore
+                    .getState()
+                    .show(
+                        isEditMode
+                            ? "습관이 수정되었습니다."
+                            : "습관이 등록되었습니다.",
+                    );
                 closeModal();
                 refetchHabits?.();
             } else {
-                useToastStore.getState().show(
-                    data.error || (isEditMode ? "습관 수정 실패" : "습관 등록 실패")
-                );
+                useToastStore
+                    .getState()
+                    .show(
+                        data.error ||
+                            (isEditMode ? "습관 수정 실패" : "습관 등록 실패"),
+                    );
             }
         } catch (error) {
             console.error("요청 실패:", error);
@@ -103,18 +112,27 @@ export default function HabitModal() {
     return (
         <ModalWrapper isOpen={isOpen} onClose={closeModal}>
             <div className={styles.container}>
-                <h2 className={styles.title}>{isEditMode ? "습관 수정" : "습관 추가"}</h2>
-                <form className={styles.form} onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSubmit();
-                }}>
+                <h2 className={styles.title}>
+                    {isEditMode ? "습관 수정" : "습관 추가"}
+                </h2>
+                <form
+                    className={styles.form}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}
+                >
                     {/* 카테고리 선택 */}
                     <div className={styles.field}>
                         <label>카테고리</label>
                         <select
                             value={categoryId ?? ""}
                             onChange={(e) =>
-                                setCategoryId(e.target.value === "" ? null : Number(e.target.value))
+                                setCategoryId(
+                                    e.target.value === ""
+                                        ? null
+                                        : Number(e.target.value),
+                                )
                             }
                             disabled={isEditMode}
                         >
@@ -130,7 +148,10 @@ export default function HabitModal() {
                     {/* 습관명 */}
                     <div className={styles.field}>
                         <label>
-                            습관명 <span className={styles.count}>{name.length}/10</span>
+                            습관명{" "}
+                            <span className={styles.count}>
+                                {name.length}/10
+                            </span>
                         </label>
                         <input
                             type="text"
@@ -148,7 +169,10 @@ export default function HabitModal() {
                     {/* 설명 */}
                     <div className={styles.field}>
                         <label>
-                            설명 <span className={styles.count}>{description.length}/100</span>
+                            설명{" "}
+                            <span className={styles.count}>
+                                {description.length}/100
+                            </span>
                         </label>
                         <textarea
                             value={description}
@@ -170,14 +194,16 @@ export default function HabitModal() {
                             min={(() => {
                                 const today = new Date();
 
-                                const startAt = isEditMode && modalProps?.habit?.startAt
-                                    ? new Date(modalProps.habit.startAt)
-                                    : new Date();
+                                const startAt =
+                                    isEditMode && modalProps?.habit?.startAt
+                                        ? new Date(modalProps.habit.startAt)
+                                        : new Date();
 
                                 const startLimit = new Date(startAt);
                                 startLimit.setDate(startLimit.getDate() + 13);
 
-                                const finalMin = startLimit > today ? startLimit : today;
+                                const finalMin =
+                                    startLimit > today ? startLimit : today;
 
                                 return finalMin.toISOString().split("T")[0];
                             })()}
