@@ -47,7 +47,7 @@ export default function HabitList() {
 
     const fetchHabits = useCallback(async () => {
         setIsLoading(true);
-        const res = await fetch("/api/members/test-habits/", {
+        const res = await fetch("/api/members/habits/", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -92,7 +92,7 @@ export default function HabitList() {
 
     useEffect(() => {
         const fetchCheckedHabits = async () => {
-            const res = await fetch("/api/members/test-habit-records/checked", {
+            const res = await fetch("/api/members/records/checked", {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` },
             });
@@ -115,7 +115,7 @@ export default function HabitList() {
         const isChecked = !!checkedHabits[habitId];
 
         try {
-            const res = await fetch("/api/members/test-habit-records", {
+            const res = await fetch("/api/members/records", {
                 method: isChecked ? "DELETE" : "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -147,7 +147,7 @@ export default function HabitList() {
         if (!confirmDelete) return;
 
         try {
-            const res = await fetch(`/api/members/test-habits/${habitId}`, {
+            const res = await fetch(`/api/members/habits/${habitId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -173,15 +173,12 @@ export default function HabitList() {
         if (!confirm) return;
 
         try {
-            const res = await fetch(
-                `/api/members/test-habits/${habitId}/giveup`,
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
+            const res = await fetch(`/api/members/habits/${habitId}/giveup`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
                 },
-            );
+            });
 
             const data = await res.json();
             if (res.ok) {
