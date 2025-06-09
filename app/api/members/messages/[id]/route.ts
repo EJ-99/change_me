@@ -6,9 +6,9 @@ import { getMemberIdFromToken } from "@/utils/auth";
 import { NextResponse } from "next/server";
 
 type RequestParams = {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 };
 
 export async function PATCH(request: Request, { params }: RequestParams) {
