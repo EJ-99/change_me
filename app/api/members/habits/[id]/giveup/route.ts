@@ -4,10 +4,11 @@ import { SbHabitRepository } from "@/infra/repositories/supabase/SbHabitReposito
 
 export async function POST(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> },
 ) {
     try {
-        const habitId = Number(params.id);
+        const { id } = await params;
+        const habitId = Number(id);
         const usecase = new GiveUpHabitUsecase(new SbHabitRepository());
         await usecase.execute(habitId);
 
