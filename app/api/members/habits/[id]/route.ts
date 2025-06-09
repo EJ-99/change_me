@@ -7,10 +7,11 @@ import { UpdateHabitUsecase } from "@/application/usecase/habit/UpdateHabitUseca
 
 export async function DELETE(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> },
 ) {
     try {
-        const habitId = Number(params.id);
+        const { id } = await params;
+        const habitId = Number(id);
         const usecase = new DeleteHabitUsecase(new SbHabitRepository());
         await usecase.execute(habitId);
 
@@ -20,15 +21,25 @@ export async function DELETE(
     }
 }
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(
+    req: NextRequest,
+    { params }: { params: Promise<{ id: string }> },
+) {
     try {
-        const id = Number(params.id);
+        const { id } = await params;
         const { categoryId, name, description, finishedAt } = await req.json();
 
         const authHeader = req.headers.get("authorization");
         const memberId = await getMemberIdFromToken(authHeader!);
 
-        const dto = new UpdateHabitDto(id, memberId!, categoryId, name, description, finishedAt);
+        const dto = new UpdateHabitDto(
+            Number(id),
+            memberId!,
+            categoryId,
+            name,
+            description,
+            finishedAt,
+        );
         const usecase = new UpdateHabitUsecase(new SbHabitRepository());
         await usecase.execute(dto);
 

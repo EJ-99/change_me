@@ -6,9 +6,9 @@ import { getMemberIdFromToken } from "@/utils/auth";
 import { NextResponse } from "next/server";
 
 type RequestParams = {
-    params: {
+    params: Promise<{
         messageId: string;
-    };
+    }>;
 };
 
 export async function DELETE(request: Request, { params }: RequestParams) {
