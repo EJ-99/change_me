@@ -18,7 +18,7 @@ export default function MessageList(props: MessageListProps) {
                 {props.messages.length === 0 ? (
                     <li className={styles.empty}>
                         <Image
-                            src={"/images/Loading.png"}
+                            src={"/images/Loading.svg"}
                             alt="함께해요 이미지"
                             width={200}
                             height={200}

@@ -35,7 +35,7 @@ export default function Header({ iconLinks }: HeaderProps) {
                 className={`${styles.logo} ${isAdmin() ? styles.admin : ""}`}
                 onClick={handleLogoClick}
             >
-                <img src={"/images/LogoChangeMe.png"} alt="Change Me" />
+                <img src={"/images/LogoChangeMe.svg"} alt="Change Me" />
                 <h1>Change Me</h1>
             </div>
             <nav className={styles.nav}>

@@ -24,7 +24,7 @@ export default function BottomSection({ habits }: BottomSectionProps) {
                 </div>
             ) : (
                 <div className={styles.empty}>
-                    <img src="/images/CategoryManagement.png" alt="empty" />
+                    <img src="/images/CategoryManagement.svg" alt="empty" />
                     <p>아직 달성한 습관이 없습니다.</p>
                 </div>
             )}

@@ -7,7 +7,7 @@ export default function Loading() {
     return (
         <div className={styles.container}>
             <Image
-                src="/images/Loading.png"
+                src="/images/Loading.svg"
                 alt="로딩 중 이미지"
                 width={140}
                 height={140}

@@ -12,7 +12,7 @@ const { ["card-front"]: cardFront, ["card-back"]: cardBack } = styles;
 export default function HabitCard({
     habit: { id, userNickname, imageUrl, isActive, habitName, description },
 }: HabitCardProps) {
-    const baseImageUrl = "/images/Facade.png";
+    const baseImageUrl = "/images/Profile.svg";
 
     return (
         <div className={styles.card}>

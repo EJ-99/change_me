@@ -183,10 +183,10 @@ export default function TestRecordList() {
                         <Image
                             src={
                                 statusTab === "success"
-                                    ? "/images/Facade.png"
+                                    ? "/images/Profile.svg"
                                     : statusTab === "fail"
-                                      ? "/images/Praise.png"
-                                      : "/images/Praise.png"
+                                      ? "/images/Praise.svg"
+                                      : "/images/Praise.svg"
                             }
                             alt={
                                 statusTab === "success"
@@ -283,7 +283,7 @@ export default function TestRecordList() {
             {statusTab === "success" && filteredHabits.length > 0 && (
                 <div className={styles.celebrate}>
                     <Image
-                        src="/images/Praise.png"
+                        src="/images/Praise.svg"
                         alt="칭찬 캐릭터"
                         width={160}
                         height={160}
@@ -300,7 +300,7 @@ export default function TestRecordList() {
             {statusTab === "fail" && filteredHabits.length > 0 && (
                 <div className={styles.celebrate}>
                     <Image
-                        src="/images/Together.png"
+                        src="/images/Together.svg"
                         alt="응원 캐릭터"
                         width={160}
                         height={160}
@@ -317,7 +317,7 @@ export default function TestRecordList() {
             {statusTab === "giveup" && filteredHabits.length > 0 && (
                 <div className={styles.celebrate}>
                     <Image
-                        src="/images/Together.png"
+                        src="/images/Together.svg"
                         alt="응원 캐릭터"
                         width={160}
                         height={160}

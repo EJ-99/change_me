@@ -13,13 +13,17 @@ export default function PasswordChangeForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
-    const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNewPasswordChange = (
+        e: React.ChangeEvent<HTMLInputElement>,
+    ) => {
         const value = e.target.value;
         setNewPassword(value);
 
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,16}$/;
         if (!passwordRegex.test(value)) {
-            setPasswordError("비밀번호는 8~16자이며, 영문/숫자/특수문자를 포함해야 합니다.");
+            setPasswordError(
+                "비밀번호는 8~16자이며, 영문/숫자/특수문자를 포함해야 합니다.",
+            );
         } else {
             setPasswordError("");
         }
@@ -52,14 +56,16 @@ export default function PasswordChangeForm() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ password: currentPassword }),
         });
 
         const verifyData = await verifyRes.json();
         if (!verifyRes.ok || !verifyData.valid) {
-            useToastStore.getState().show("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+            useToastStore
+                .getState()
+                .show("비밀번호가 틀렸습니다. 다시 입력해주세요.");
             return;
         }
 
@@ -68,19 +74,21 @@ export default function PasswordChangeForm() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ newPassword }),
         });
 
         if (changeRes.ok) {
-            useToastStore.getState().show("비밀번호가 성공적으로 변경되었습니다.");
+            useToastStore
+                .getState()
+                .show("비밀번호가 성공적으로 변경되었습니다.");
             router.push("/member/profile");
         } else {
             const data = await changeRes.json();
-            useToastStore.getState().show(
-                data.error || "비밀번호 변경에 실패했습니다."
-            );
+            useToastStore
+                .getState()
+                .show(data.error || "비밀번호 변경에 실패했습니다.");
         }
     };
 
@@ -91,13 +99,17 @@ export default function PasswordChangeForm() {
                     <div className={styles.texts}>
                         <h2>비밀번호 변경</h2>
                         <p>
-                            안전한 비밀번호로 내 정보를 보호하세요<br />
-                            <a>다른 아이디/사이트에서 사용한 적 없는 비밀번호</a><br />
+                            안전한 비밀번호로 내 정보를 보호하세요
+                            <br />
+                            <a>
+                                다른 아이디/사이트에서 사용한 적 없는 비밀번호
+                            </a>
+                            <br />
                             <a>이전에 사용한 적 없는 비밀번호</a>가 안전합니다.
                         </p>
                     </div>
                     <div className={styles.image}>
-                        <img src="/images/Security.png" alt="보안 이미지" />
+                        <img src="/images/Security.svg" alt="보안 이미지" />
                     </div>
                 </div>
 

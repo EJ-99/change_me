@@ -1,7 +1,7 @@
 "use client";
 
-import emptyHeartImage from "@/public/images/EmptyHeart.png";
-import fullHeartImage from "@/public/images/FullHeart.png";
+import emptyHeartImage from "@/public/images/EmptyHeart.svg";
+import fullHeartImage from "@/public/images/FullHeart.svg";
 
 import { MessageLikeDto } from "@/application/usecase/message-like/dto/MessageLikeDto";
 import { useMessageLikes } from "@/hooks/useMessageLikes";

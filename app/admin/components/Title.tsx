@@ -21,7 +21,7 @@ export default function Title({ createCategory }: TitleProps) {
         <div className={styles.title}>
             <h2>카테고리 관리</h2>
             <button className={styles.addBtn} onClick={handleCreateClick}>
-                <img src="/images/AddIcon.png" alt="추가" />
+                <img src="/images/AddIcon.svg" alt="추가" />
                 <span>새로운 카테고리 추가</span>
             </button>
         </div>

@@ -12,7 +12,7 @@ type CreateMessageFormProps = {
 
 export default function CreateMessageForm(props: CreateMessageFormProps) {
     const contentMaxLength: number = 100;
-    const defaultProfileImageUrl: string = "/images/ProfileCircle.png";
+    const defaultProfileImageUrl: string = "/images/Profile.svg";
 
     const { token } = useAuthStore();
     const [nickname, setNickname] = useState<string>("");

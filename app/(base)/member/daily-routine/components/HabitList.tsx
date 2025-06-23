@@ -236,7 +236,7 @@ export default function HabitList() {
                     }
                 >
                     <Image
-                        src="/images/AddIcon.png"
+                        src="/images/AddIcon.svg"
                         alt="추가"
                         width={16}
                         height={16}
@@ -250,7 +250,7 @@ export default function HabitList() {
                 {filteredHabits.length === 0 ? (
                     <div className={styles.empty}>
                         <Image
-                            src="/images/DailyRoutineCheck.png"
+                            src="/images/DailyRoutineCheck.svg"
                             alt="조회된 습관 없음"
                             width={140}
                             height={140}

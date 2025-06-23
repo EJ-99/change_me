@@ -6,7 +6,7 @@ export default function NotFound() {
     return (
         <div className={styles.container}>
             <Image
-                src="/images/NotFound.png"
+                src="/images/NotFound.svg"
                 alt="NotFound"
                 width={140}
                 height={140}

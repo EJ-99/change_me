@@ -50,10 +50,7 @@ export default function MessageItem(props: MessageItemProps) {
                 <nav>
                     <div className={styles.profile}>
                         <Image
-                            src={
-                                messageDto.imageUrl ||
-                                "/images/ProfileCircle.png"
-                            }
+                            src={messageDto.imageUrl || "/images/Profile.svg"}
                             alt="프로필 이미지"
                             width={40}
                             height={40}
