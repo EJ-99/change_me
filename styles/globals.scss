@@ -1,3 +1,5 @@
+@import "./breakpoints";
+
 :root {
     /* color */
     --color-main1: #40b7df;
@@ -26,6 +28,17 @@
     --fontWeight-bold: 700;
     --fontWeight-semiBold: 600;
     --fontWeight-regular: 400;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    :root {
+        --fontSize-3xl: 18px;
+        --fontSize-2xl: 16px;
+        --fontSize-xl: 14px;
+        --fontSize-lg: 13px;
+        --fontSize-md: 12px;
+        --fontSize-sm: 11px;
+    }
 }
 
 html,

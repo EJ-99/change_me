@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
-import ProfileImage from "./ProfileImage";
+import ProfileImage from "../ProfileImage";
 
 const iconLinks = [
     {
@@ -56,8 +56,8 @@ export default function Header() {
                     <Image
                         src={"/images/LogoChangeMe.svg"}
                         alt="Change Me"
-                        width={50}
-                        height={50}
+                        width={60}
+                        height={60}
                     />
                     <h1>Change Me</h1>
                 </Link>
@@ -73,7 +73,8 @@ export default function Header() {
                                 />
                             ))}
                         </nav>
-                        <div ref={profileRef}>
+
+                        <div className={styles.user} ref={profileRef}>
                             <button
                                 onClick={() =>
                                     setIsProfileOpen((prev) => !prev)
@@ -83,14 +84,12 @@ export default function Header() {
                                     imgUrl={
                                         user?.imageUrl || "/images/Profile.svg"
                                     }
-                                    alt="프로필"
-                                    width={40}
-                                    height={40}
                                 />
                             </button>
                             {isProfileOpen && (
                                 <ProfileDropdown
                                     onClose={() => setIsProfileOpen(false)}
+                                    menus={iconLinks}
                                 />
                             )}
                         </div>

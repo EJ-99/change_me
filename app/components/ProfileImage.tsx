@@ -3,20 +3,12 @@ import styles from "./ProfileImage.module.scss";
 
 type ProfileImageProps = {
     imgUrl: string;
-    alt: string;
-    width: number;
-    height: number;
 };
 
-export default function ProfileImage({
-    imgUrl,
-    alt,
-    width,
-    height,
-}: ProfileImageProps) {
+export default function ProfileImage({ imgUrl }: ProfileImageProps) {
     return (
-        <div className={styles.wrapper} style={{ width, height }}>
-            <Image src={imgUrl} alt={alt} width={width} height={height} />
+        <div className={styles.wrapper}>
+            <Image src={imgUrl} alt="프로필" fill />
         </div>
     );
 }

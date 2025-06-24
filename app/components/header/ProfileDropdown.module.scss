@@ -1,0 +1,82 @@
+@import "@/styles/breakpoints";
+
+.wrapper {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 120px;
+    padding: 4px;
+    margin-top: 2px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-lightGray);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+
+    > .menus {
+        display: none;
+    }
+
+    > .user {
+        width: 100%;
+        padding: 8px 0;
+        border-radius: 8px;
+        font-size: var(--fontSize-md);
+        color: var(--color-darkGray);
+        font-weight: var(--fontWeight-semiBold);
+    }
+
+    .user:hover {
+        background-color: var(--color-main3);
+    }
+}
+
+@include mobile {
+    @include mobile {
+        .wrapper {
+            width: 100%;
+            top: 90%;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid var(--color-lightGray);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05);
+            gap: 4px;
+            padding: 4px 0;
+
+            > .menus {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 8px 0;
+                border-bottom: 2px solid var(--color-lightGray);
+                > .menu {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2px;
+                    font-size: var(--fontSize-xl);
+                    font-weight: var(--fontWeight-semiBold);
+
+                    > span {
+                        color: var(--color-darkGray);
+                    }
+                }
+
+                > .menu:hover {
+                    span {
+                        color: var(--color-black);
+                    }
+                }
+            }
+
+            button {
+                padding: 8px 0;
+            }
+
+            > .user {
+                font-size: var(--fontSize-lg);
+            }
+        }
+    }
+}
