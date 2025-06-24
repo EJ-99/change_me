@@ -1,83 +1,71 @@
 .header {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 24px;
-    width: 100%;
-    min-height: 150px;
-    user-select: none;
+    background-color: var(--color-white);
+    border-bottom: 1.5px solid var(--color-lightGray);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 
-    // 브레이크포인트 이하일 땐 수직 정렬
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px;
-    }
-
-    > .logo,
-    > .user {
+    > .wrapper {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        min-width: 120px;
-    }
+        padding: 16px;
+        width: 100%;
+        user-select: none;
+        max-width: 1024px;
+        margin: auto;
 
-    > .logo {
-        gap: 8px;
+        > .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
 
-        > img {
-            width: 80px;
-            height: 80px;
-        }
+            > h1 {
+                color: var(--color-main1);
+                font-size: var(--fontSize-xl);
+                white-space: nowrap;
+            }
 
-        > h1 {
-            color: var(--color-main1);
-            font-size: var(--fontSize-2xl);
-            white-space: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            margin-top: 16px;
-            > img {
-                width: 60px;
-                height: 60px;
+            @media (max-width: 768px) {
+                > img {
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
-    }
 
-    > .admin {
-        cursor: pointer;
-    }
+        > .links {
+            position: relative;
+            display: flex;
+            gap: 24px;
+            align-items: center;
 
-    > .nav {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        gap: 32px;
-        white-space: nowrap;
-
-        @media (max-width: 768px) {
-            flex-wrap: wrap;
-            gap: 16px;
+            > .nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
         }
-    }
 
-    > .user {
-        gap: 12px;
-        font-size: var(--fontSize-lg);
-        font-weight: var(--fontWeight-regular);
-        flex-wrap: wrap;
-
-        :hover {
+        > .login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: var(--fontSize-md);
             font-weight: var(--fontWeight-semiBold);
+            background-color: var(--color-main3);
+            transition: all 250ms ease-in-out;
         }
-
-        @media (max-width: 768px) {
-            min-width: 0;
-            position: absolute;
-            right: 8px;
-            font-size: var(--fontSize-xs);
+        > .login:hover {
+            filter: brightness(1.05);
         }
     }
 }

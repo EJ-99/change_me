@@ -5,6 +5,7 @@
     gap: 8px;
     flex-wrap: wrap;
     font-size: var(--fontSize-lg);
+    margin-top: 24px;
 
     @media (max-width: 768px) {
         font-size: var(--fontSize-md);

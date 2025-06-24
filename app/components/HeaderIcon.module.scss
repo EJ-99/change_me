@@ -1,34 +1,28 @@
 .link {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 4px;
     padding: 8px;
     transition: font-weight 300ms ease-in-out;
+
     > img {
-        width: 50px;
-        height: 50px;
-        @media (max-width: 768px) {
-            width: 35px;
-            height: 35px;
-        }
+        width: 30px;
+        height: 30px;
     }
 
     > h3 {
-        font-size: var(--fontSize-xl);
-        font-weight: var(--fontWeight-regular);
-
-        @media (max-width: 768px) {
-            font-size: var(--fontSize-md);
-        }
+        font-size: var(--fontSize-lg);
+        font-weight: var(--fontWeight-semiBold);
+        color: var(--color-darkGray);
     }
 
     .active {
-        font-weight: var(--fontWeight-semiBold);
+        color: var(--color-black);
     }
 
     &:hover {
         > h3 {
-            font-weight: var(--fontWeight-semiBold);
+            color: var(--color-black);
         }
     }
 }
