@@ -1,18 +1,40 @@
+@import "@/styles/breakpoints";
+
 .container {
-    position: fixed;
-    left: 45%;
-    top: 40%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 4px;
+
+    > .image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        animation: spinAndShrink 1.5s linear infinite;
+    }
+
+    > .text {
+        font-size: var(--fontSize-xl);
+        font-weight: var(--fontWeight-semiBold);
+        color: var(--color-darkGray);
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 1ch;
+            animation: dots 1.5s steps(3, end) infinite;
+        }
+    }
 }
 
-.image {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    animation: spinAndShrink 1.2s linear infinite;
+@include mobile {
+    .image {
+        width: 80px;
+        height: 80px;
+    }
 }
 
 @keyframes spinAndShrink {
@@ -37,47 +59,20 @@
     }
 }
 
-.text {
-    margin-top: 1rem;
-    font-size: var(--fontSize-xl);
-    font-weight: var(--fontWeight-semiBold);
-    color: var(--color-darkGray);
-    animation: flash 1s ease-in-out infinite;
-
-    &::after {
-        content: '';
-        display: inline-block;
-        width: 1ch;
-        animation: dots 1.2s steps(3, end) infinite;
-    }
-}
-
 @keyframes dots {
     0% {
-        content: '';
+        content: "";
     }
 
     33% {
-        content: '.';
+        content: ".";
     }
 
     66% {
-        content: '..';
+        content: "..";
     }
 
     100% {
-        content: '...';
-    }
-}
-
-@keyframes flash {
-
-    0%,
-    100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(3);
+        content: "...";
     }
 }

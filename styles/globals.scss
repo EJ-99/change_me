@@ -28,6 +28,9 @@
     --fontWeight-bold: 700;
     --fontWeight-semiBold: 600;
     --fontWeight-regular: 400;
+
+    /* header size*/
+    --header-height: 92px;
 }
 
 @media (max-width: $breakpoint-mobile) {
@@ -38,6 +41,7 @@
         --fontSize-lg: 13px;
         --fontSize-md: 12px;
         --fontSize-sm: 11px;
+        --header-height: 72px;
     }
 }
 
@@ -45,16 +49,24 @@ html,
 body {
     box-sizing: border-box;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100svh;
     margin: auto;
     overflow: auto;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 main {
-    box-sizing: border-box;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     margin: 0 auto;
+    padding-top: calc(var(--header-height) / 2);
     display: flex;
     justify-content: center;
     @media (max-width: 768px) {

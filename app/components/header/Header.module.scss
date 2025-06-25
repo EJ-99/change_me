@@ -1,6 +1,8 @@
 @import "@/styles/breakpoints";
 
 .header {
+    flex-shrink: 0;
+    height: var(--header-height);
     position: sticky;
     top: 0;
     display: flex;
@@ -12,11 +14,12 @@
     z-index: 999;
 
     > .wrapper {
+        flex: 1;
+        width: 100%;
+        padding: 0 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 16px;
-        width: 100%;
         user-select: none;
         max-width: 1024px;
         margin: auto;
