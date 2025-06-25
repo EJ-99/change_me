@@ -35,10 +35,10 @@
 
 @media (max-width: $breakpoint-mobile) {
     :root {
-        --fontSize-3xl: 18px;
-        --fontSize-2xl: 16px;
-        --fontSize-xl: 14px;
-        --fontSize-lg: 13px;
+        --fontSize-3xl: 24px;
+        --fontSize-2xl: 18px;
+        --fontSize-xl: 16px;
+        --fontSize-lg: 14px;
         --fontSize-md: 12px;
         --fontSize-sm: 11px;
         --header-height: 72px;
@@ -52,7 +52,6 @@ body {
     height: 100%;
     min-height: 100svh;
     margin: auto;
-    overflow: auto;
 }
 
 body {
@@ -66,12 +65,12 @@ main {
     height: 100%;
     box-sizing: border-box;
     margin: 0 auto;
-    padding-top: calc(var(--header-height) / 2);
     display: flex;
     justify-content: center;
     @media (max-width: 768px) {
         width: 100%;
     }
+    overflow: auto;
 }
 
 * {

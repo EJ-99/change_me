@@ -1,13 +1,14 @@
 "use client";
 
-import CategoryFilter from "./components/CategoryFilter";
-import TopSection from "./components/TopSection";
-import BottomSection from "./components/BottomSection";
-import { useCategories } from "@/hooks/useCategories";
-import Loading from "../components/Loading";
 import { useRouter, useSearchParams } from "next/navigation";
+import Loading from "../components/Loading";
+import { useCategories } from "@/hooks/useCategories";
 import { useAnonHabits } from "@/hooks/useAnonHabits";
 import styles from "./page.module.scss";
+import Intro from "./components/Intro";
+import TopSection from "./components/TopSection";
+import BottomSection from "./components/BottomSection";
+import CategoryFilter from "./components/CategoryFilter";
 
 export default function RootPage() {
     const searchParams = useSearchParams();
@@ -32,17 +33,37 @@ export default function RootPage() {
         router.push(`?categoryId=${id}`);
     };
 
-    if (isCategoryLoading || isHabitLoading) return <Loading />;
+    //if (isCategoryLoading || isHabitLoading) return <Loading />;
 
     return (
         <div className={styles.page}>
-            <CategoryFilter
-                selected={categoryId}
-                categories={categories}
-                handleCategoryChange={handleCategoryChange}
-            />
-            <TopSection countInfo={countInfo} category={selectedCategory!} />
-            <BottomSection habits={habits} />
+            <section className={styles.section}>
+                <Intro />
+            </section>
+            <section className={styles.section}>
+                {isCategoryLoading || isHabitLoading ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <CategoryFilter
+                            selected={categoryId}
+                            categories={categories}
+                            handleCategoryChange={handleCategoryChange}
+                        />
+                        <TopSection
+                            countInfo={countInfo}
+                            category={selectedCategory}
+                        />
+                    </>
+                )}
+            </section>
+            <section className={styles.section}>
+                {isHabitLoading ? (
+                    <Loading />
+                ) : (
+                    <BottomSection habits={habits} />
+                )}
+            </section>
         </div>
     );
 }
