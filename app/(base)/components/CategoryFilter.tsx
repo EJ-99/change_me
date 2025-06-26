@@ -5,9 +5,9 @@ import React from "react";
 import styles from "./CategoryFilter.module.scss";
 
 type CategoryFilterProps = {
-    selected: number | "all";
+    selected: number;
     categories: Category[];
-    onChange: (id: number | "all") => void;
+    onChange: (id: number) => void;
 };
 
 export default function CategoryFilter({
@@ -15,7 +15,7 @@ export default function CategoryFilter({
     categories,
     onChange,
 }: CategoryFilterProps) {
-    categories = [{ id: "all", name: "전체" }, ...categories];
+    categories = [{ id: -1, name: "전체" }, ...categories];
     return (
         <ul className={styles.filter}>
             {categories.map((category) => (
