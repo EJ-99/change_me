@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@use "@/styles/breakpoints" as bp;
 
 .header {
     flex-shrink: 0;
@@ -36,7 +36,7 @@
                 white-space: nowrap;
             }
 
-            @include mobile {
+            @include bp.mobile {
                 > img {
                     width: 40px;
                     height: 40px;
@@ -63,14 +63,14 @@
                 align-items: center;
             }
 
-            @include mobile {
+            @include bp.mobile {
                 > .nav {
                     display: none;
                 }
             }
         }
 
-        @include mobile {
+        @include bp.mobile {
             .links {
                 position: static;
             }

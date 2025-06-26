@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@use "@/styles/breakpoints" as bp;
 
 .wrapper {
     max-width: 1024px;
@@ -81,7 +81,7 @@
     }
 }
 
-@include mobile {
+@include bp.mobile {
     .wrapper {
         gap: 48px;
 

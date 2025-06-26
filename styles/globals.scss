@@ -1,4 +1,4 @@
-@import "./breakpoints";
+@use "./breakpoints" as bp;
 
 :root {
     /* color */
@@ -33,7 +33,7 @@
     --header-height: 92px;
 }
 
-@media (max-width: $breakpoint-mobile) {
+@include bp.mobile {
     :root {
         --fontSize-3xl: 24px;
         --fontSize-2xl: 18px;

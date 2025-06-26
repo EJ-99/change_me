@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@use "@/styles/breakpoints" as bp;
 
 .page {
     width: 100%;
@@ -17,7 +17,7 @@
         margin: 0 auto;
     }
 
-    @include mobile {
+    @include bp.mobile {
         .section {
             padding: 48px 0;
         }

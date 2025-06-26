@@ -33,8 +33,6 @@ export default function RootPage() {
         router.push(`?categoryId=${id}`);
     };
 
-    //if (isCategoryLoading || isHabitLoading) return <Loading />;
-
     return (
         <div className={styles.page}>
             <section className={styles.section}>

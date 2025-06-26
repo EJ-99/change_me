@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@use "@/styles/breakpoints" as bp;
 
 .wrapper {
     position: absolute;
@@ -32,51 +32,49 @@
     }
 }
 
-@include mobile {
-    @include mobile {
-        .wrapper {
-            width: 100%;
-            top: 90%;
-            border: none;
-            border-radius: 0;
-            border-bottom: 1px solid var(--color-lightGray);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05);
+@include bp.mobile {
+    .wrapper {
+        width: 100%;
+        top: 90%;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid var(--color-lightGray);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05);
+        gap: 4px;
+        padding: 4px 0;
+
+        > .menus {
+            display: flex;
+            flex-direction: column;
             gap: 4px;
-            padding: 4px 0;
-
-            > .menus {
+            padding: 8px 0;
+            border-bottom: 2px solid var(--color-lightGray);
+            > .menu {
                 display: flex;
-                flex-direction: column;
-                gap: 4px;
-                padding: 8px 0;
-                border-bottom: 2px solid var(--color-lightGray);
-                > .menu {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 2px;
-                    font-size: var(--fontSize-xl);
-                    font-weight: var(--fontWeight-semiBold);
+                justify-content: center;
+                align-items: center;
+                gap: 2px;
+                font-size: var(--fontSize-xl);
+                font-weight: var(--fontWeight-semiBold);
 
-                    > span {
-                        color: var(--color-darkGray);
-                    }
-                }
-
-                > .menu:hover {
-                    span {
-                        color: var(--color-black);
-                    }
+                > span {
+                    color: var(--color-darkGray);
                 }
             }
 
-            button {
-                padding: 8px 0;
+            > .menu:hover {
+                span {
+                    color: var(--color-black);
+                }
             }
+        }
 
-            > .user {
-                font-size: var(--fontSize-lg);
-            }
+        button {
+            padding: 8px 0;
+        }
+
+        > .user {
+            font-size: var(--fontSize-lg);
         }
     }
 }
