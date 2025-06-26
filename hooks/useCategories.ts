@@ -2,7 +2,7 @@ import { fetcher } from "@/utils/fetcher";
 import useSWR from "swr";
 
 export type Category = {
-    id: number;
+    id: number | "all";
     name: string;
 };
 export type ResponseType = {

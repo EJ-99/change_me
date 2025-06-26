@@ -1,27 +1,27 @@
+@use "@/styles/breakpoints" as bp;
+
 .filter {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
-    font-size: var(--fontSize-lg);
-    margin-top: 24px;
-
-    @media (max-width: 768px) {
-        font-size: var(--fontSize-md);
-    }
+    font-size: var(--fontSize-md);
 
     > .item {
         background-color: var(--color-main2);
         width: 90px;
-        padding: 8px 0;
-        text-align: center;
+        padding: 8px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
         cursor: pointer;
         transition: all 200ms ease-in-out;
 
-        @media (max-width: 768px) {
-            width: 60px;
-            padding: 6px 0;
+        @include bp.mobile {
+            padding: 8px;
         }
     }
 

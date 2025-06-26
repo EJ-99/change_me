@@ -5,24 +5,24 @@ import React from "react";
 import styles from "./CategoryFilter.module.scss";
 
 type CategoryFilterProps = {
-    selected: number;
+    selected: number | "all";
     categories: Category[];
-    handleCategoryChange: (id: number) => void;
+    onChange: (id: number | "all") => void;
 };
 
 export default function CategoryFilter({
     selected,
     categories,
-    handleCategoryChange,
+    onChange,
 }: CategoryFilterProps) {
-    categories = [{ id: -1, name: "전체" }, ...categories];
+    categories = [{ id: "all", name: "전체" }, ...categories];
     return (
         <ul className={styles.filter}>
             {categories.map((category) => (
                 <li
                     key={category.id}
                     className={`${selected === category.id && styles.selected} ${styles.item}`}
-                    onClick={() => handleCategoryChange(category.id)}
+                    onClick={() => onChange(category.id)}
                 >
                     {category.name}
                 </li>

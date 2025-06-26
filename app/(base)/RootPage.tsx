@@ -14,10 +14,12 @@ export default function RootPage() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const categoryId =
-        searchParams.get("categoryId") !== null
-            ? Number(searchParams.get("categoryId"))
-            : -1;
+    let categoryId: number | "all" = "all";
+    const categoryIdParam = Number(searchParams.get("categoryId"));
+    if (categoryIdParam !== null && !isNaN(categoryIdParam)) {
+        categoryId = categoryIdParam;
+    }
+
     const { categories, isLoading: isCategoryLoading } = useCategories(true);
     const {
         countInfo,
@@ -29,7 +31,7 @@ export default function RootPage() {
         categories.find((category) => category.id === categoryId)?.name ||
         "전체";
 
-    const handleCategoryChange = (id: number) => {
+    const handleCategoryChange = (id: number | "all") => {
         router.push(`?categoryId=${id}`);
     };
 
@@ -39,14 +41,14 @@ export default function RootPage() {
                 <Intro />
             </section>
             <section className={styles.section}>
-                {isCategoryLoading || isHabitLoading ? (
+                {isHabitLoading && isCategoryLoading ? (
                     <Loading />
                 ) : (
                     <>
                         <CategoryFilter
                             selected={categoryId}
                             categories={categories}
-                            handleCategoryChange={handleCategoryChange}
+                            onChange={handleCategoryChange}
                         />
                         <TopSection
                             countInfo={countInfo}
