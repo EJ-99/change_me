@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ModalType = "category" | "habit" | "viewHabit" | null;
+type ModalType = "category" | "habit" | "viewHabit" | "habitPreview" | null;
 
 interface ModalStore {
     modalType: ModalType;

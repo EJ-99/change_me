@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./SectionHeader.module.scss";
 
 type SectionHeaderProps = {
