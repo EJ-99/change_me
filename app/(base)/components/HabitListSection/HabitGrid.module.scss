@@ -1,0 +1,70 @@
+@use "@/styles/breakpoints" as bp;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px;
+    max-width: 100%;
+    padding: 16px;
+
+    @include bp.mobile {
+        grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+        gap: 24px;
+        padding: 12px;
+    }
+
+    .profileItem {
+        width: 84px;
+        height: 84px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 100%;
+        border: 1px solid var(--color-gray);
+        overflow: hidden;
+        transition:
+            transform 300ms ease,
+            box-shadow 300ms ease;
+
+        &:hover {
+            transform: scale(1.15) rotate(-2deg);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @include bp.mobile {
+            width: 64px;
+            height: 64px;
+        }
+
+        .image {
+            object-fit: cover;
+        }
+    }
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding: 16px 0;
+    font-size: var(--fontSize-lg);
+
+    @include bp.mobile {
+        padding: 12px 0;
+    }
+
+    svg {
+        stroke: var(--color-main1);
+    }
+
+    p {
+        line-height: 1.5;
+        color: var(--color-darkGray);
+    }
+
+    span {
+        font-weight: var(--fontWeight-bold);
+        color: var(--color-black);
+    }
+}

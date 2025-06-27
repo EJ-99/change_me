@@ -1,13 +1,10 @@
 "use client";
 
-import emptyHeartImage from "@/public/images/EmptyHeart.png";
-import fullHeartImage from "@/public/images/FullHeart.png";
-
 import { MessageLikeDto } from "@/application/usecase/message-like/dto/MessageLikeDto";
 import { useMessageLikes } from "@/hooks/useMessageLikes";
-import Image from "next/image";
 import styles from "./LikeButton.module.scss";
 import { useEffect, useState } from "react";
+import { Heart } from "lucide-react";
 
 type LikeButtonProps = {
     isLiked: Boolean;
@@ -50,11 +47,14 @@ export default function LikeButton(props: LikeButtonProps) {
             setCount((prev) => prev + (newLiked ? -1 : 1));
         }
     };
-    const iconImage = liked ? fullHeartImage : emptyHeartImage;
 
     return (
         <button className={styles.button} onClick={toggleLike}>
-            <Image src={iconImage} alt="하트 아이콘" />
+            <Heart
+                size={18}
+                fill={liked ? "var(--color-red)" : "none"}
+                stroke="var(--color-red)"
+            />
             <span>{count}</span>
         </button>
     );

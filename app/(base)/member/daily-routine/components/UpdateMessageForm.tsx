@@ -15,7 +15,7 @@ type UpdateMessageFormProps = {
 
 export default function UpdateMessageForm(props: UpdateMessageFormProps) {
     const contentMaxLength: number = 100;
-    const defaultProfileImageUrl: string = "/images/ProfileCircle.png";
+    const defaultProfileImageUrl: string = "/images/Profile.svg";
     const defaultContent = props.messageDto.content;
     const id: number = props.messageDto.id;
 

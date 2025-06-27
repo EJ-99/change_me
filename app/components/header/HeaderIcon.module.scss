@@ -1,0 +1,28 @@
+.link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    transition: font-weight 300ms ease-in-out;
+
+    > img {
+        width: 30px;
+        height: 30px;
+    }
+
+    > h3 {
+        font-size: var(--fontSize-lg);
+        font-weight: var(--fontWeight-semiBold);
+        color: var(--color-darkGray);
+    }
+
+    .active {
+        color: var(--color-black);
+    }
+
+    &:hover {
+        > h3 {
+            color: var(--color-black);
+        }
+    }
+}

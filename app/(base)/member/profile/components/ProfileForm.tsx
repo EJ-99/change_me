@@ -24,7 +24,9 @@ export default function ProfileForm({ profile }: Props) {
     const formattedDate = `${kst.getFullYear()}.${String(kst.getMonth() + 1).padStart(2, "0")}.${String(kst.getDate()).padStart(2, "0")}`;
 
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [preview, setPreview] = useState<string | null>(profile.imageUrl ?? null);
+    const [preview, setPreview] = useState<string | null>(
+        profile.imageUrl ?? null,
+    );
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [password, setPassword] = useState("");
     const [nickname, setNickname] = useState(profile.nickname);
@@ -62,7 +64,7 @@ export default function ProfileForm({ profile }: Props) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ id: profile.id, password }),
         });
@@ -70,7 +72,9 @@ export default function ProfileForm({ profile }: Props) {
         const passwordData = await passwordRes.json();
 
         if (!passwordRes.ok || !passwordData.valid) {
-            useToastStore.getState().show("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+            useToastStore
+                .getState()
+                .show("비밀번호가 틀렸습니다. 다시 입력해주세요.");
             return;
         }
 
@@ -84,7 +88,7 @@ export default function ProfileForm({ profile }: Props) {
         const res = await fetch("/api/members/profile-image", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: formData,
         });
@@ -94,12 +98,12 @@ export default function ProfileForm({ profile }: Props) {
             if (data.imageUrl) {
                 setPreview(data.imageUrl);
             }
-            useToastStore.getState().show("프로필이 성공적으로 변경되었습니다.");
+            useToastStore
+                .getState()
+                .show("프로필이 성공적으로 변경되었습니다.");
             setPassword("");
         } else {
-            useToastStore.getState().show(
-                data.error || "프로필 업데이트 실패"
-            );
+            useToastStore.getState().show(data.error || "프로필 업데이트 실패");
         }
     };
 
@@ -109,7 +113,7 @@ export default function ProfileForm({ profile }: Props) {
 
             <div onClick={handleImageClick} className={styles.avatar}>
                 <Image
-                    src={preview || "/images/ProfileSquare.png"}
+                    src={preview || "/images/Profile.svg"}
                     alt="프로필 이미지"
                     width={140}
                     height={140}
@@ -145,7 +149,9 @@ export default function ProfileForm({ profile }: Props) {
                         placeholder="비밀번호 입력"
                     />
                 </div>
-                {password === "" && <div className={styles.error}>비밀번호를 입력해주세요.</div>}
+                {password === "" && (
+                    <div className={styles.error}>비밀번호를 입력해주세요.</div>
+                )}
 
                 <div className={styles.row}>
                     <strong>닉네임</strong>
@@ -157,7 +163,9 @@ export default function ProfileForm({ profile }: Props) {
                     />
                 </div>
                 {nickname.length > 20 && (
-                    <div className={styles.error}>20자 이내로 작성해주세요.</div>
+                    <div className={styles.error}>
+                        20자 이내로 작성해주세요.
+                    </div>
                 )}
 
                 <button className={styles.submitButton} onClick={handleSubmit}>

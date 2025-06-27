@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "@/styles/globals.scss";
 import Modals from "./components/Modals";
 import Toast from "./components/Toast";
 
@@ -25,7 +25,7 @@ const NotoSans = localFont({
 });
 
 export const metadata: Metadata = {
-    icons: "/images/LogoChangeMe.png",
+    icons: "/images/LogoChangeMe.svg",
     title: "Change Me",
 };
 

@@ -28,7 +28,7 @@ export default function AuthLayout({
     return (
         <div className={styles.wrapper}>
             <Link className={styles.logo} href="/">
-                <img src="/images/LogoChangeMe.png" />
+                <img src="/images/LogoChangeMe.svg" />
                 <h1>Change Me</h1>
             </Link>
             <main>{children}</main>
