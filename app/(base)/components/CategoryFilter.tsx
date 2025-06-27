@@ -17,16 +17,18 @@ export default function CategoryFilter({
 }: CategoryFilterProps) {
     categories = [{ id: -1, name: "전체" }, ...categories];
     return (
-        <ul className={styles.filter}>
-            {categories.map((category) => (
-                <li
-                    key={category.id}
-                    className={`${selected === category.id && styles.selected} ${styles.item}`}
-                    onClick={() => onChange(category.id)}
-                >
-                    {category.name}
-                </li>
-            ))}
-        </ul>
+        <div className={styles.wrapper}>
+            <ul className={styles.filter}>
+                {categories.map((category) => (
+                    <li
+                        key={category.id}
+                        className={`${selected === category.id && styles.selected} ${styles.item}`}
+                        onClick={() => onChange(category.id)}
+                    >
+                        {category.name}
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }

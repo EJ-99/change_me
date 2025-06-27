@@ -1,39 +1,44 @@
 @use "@/styles/breakpoints" as bp;
 
-.filter {
+.wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    font-size: var(--fontSize-md);
 
-    > .item {
-        background-color: var(--color-main2);
-        width: 90px;
-        padding: 8px 16px;
+    .filter {
+        max-width: 100%;
+        overflow-x: auto;
         display: flex;
-        justify-content: center;
         align-items: center;
-        border-radius: 100px;
-        cursor: pointer;
-        transition: all 200ms ease-in-out;
-
-        @include bp.mobile {
-            padding: 8px;
+        gap: 12px;
+        font-size: var(--fontSize-md);
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            display: none;
         }
-    }
 
-    > .item:hover {
-        background-color: var(--color-main1);
-        color: var(--color-lightGray);
-        font-weight: var(--fontWeight-semiBold);
-    }
+        > .item {
+            background-color: var(--color-main2);
+            padding: 8px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
+        }
 
-    > .selected {
-        background-color: var(--color-main1);
-        color: var(--color-lightGray);
-        font-weight: var(--fontWeight-semiBold);
+        > .item:hover {
+            background-color: var(--color-main1);
+            color: var(--color-lightGray);
+            font-weight: var(--fontWeight-semiBold);
+        }
+
+        > .selected {
+            background-color: var(--color-main1);
+            color: var(--color-lightGray);
+            font-weight: var(--fontWeight-semiBold);
+        }
     }
 }
