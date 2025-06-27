@@ -20,11 +20,6 @@
         border-radius: 8px;
         transition: background-color 200ms ease-in-out;
 
-        > img {
-            width: 24px;
-            height: 24px;
-        }
-
         > span {
             font-size: var(--fontSize-md);
             font-weight: var(--fontWeight-semiBold);

@@ -8,6 +8,7 @@ import Loading from "@/app/components/Loading";
 import Image from "next/image";
 import { useToastStore } from "@/stores/toastStore";
 import { useRouter } from "next/navigation";
+import { Plus } from "lucide-react";
 
 type Habit = {
     id: number;
@@ -235,13 +236,7 @@ export default function HabitList() {
                         })
                     }
                 >
-                    <Image
-                        src="/images/AddIcon.svg"
-                        alt="추가"
-                        width={16}
-                        height={16}
-                        className={styles.plusIcon}
-                    />
+                    <Plus size={18} strokeWidth={3} />
                     새로운 습관 생성
                 </button>
             </div>
