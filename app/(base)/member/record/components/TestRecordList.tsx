@@ -184,9 +184,8 @@ export default function TestRecordList() {
                             src={
                                 statusTab === "success"
                                     ? "/images/Profile.svg"
-                                    : statusTab === "fail"
-                                      ? "/images/Praise.svg"
-                                      : "/images/Praise.svg"
+                                    : "/images/Praise.svg"
+
                             }
                             alt={
                                 statusTab === "success"
