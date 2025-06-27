@@ -5,6 +5,12 @@
     border-radius: 100px;
     overflow: hidden;
 
+    .ongoing,
+    .success,
+    .failed {
+        transition: width 500ms ease-in-out;
+    }
+
     .ongoing {
         background: var(--color-main1);
     }

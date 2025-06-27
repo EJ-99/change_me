@@ -1,5 +1,6 @@
 import { Loader, CheckCircle, XCircle } from "lucide-react";
 import styles from "./StatusSummary.module.scss";
+import { useCountUp } from "@/hooks/useCountUp";
 
 type StatusItemProps = {
     icon: React.ReactNode;
@@ -9,6 +10,7 @@ type StatusItemProps = {
 };
 
 function StatusItem({ icon, value, label, color }: StatusItemProps) {
+    const animatedValue = useCountUp(value);
     return (
         <div className={styles.item}>
             <div
@@ -18,7 +20,7 @@ function StatusItem({ icon, value, label, color }: StatusItemProps) {
                 {icon}
             </div>
             <p className={styles.label}>{label}</p>
-            <p className={styles.count}>{value}</p>
+            <p className={styles.count}>{animatedValue}</p>
         </div>
     );
 }
